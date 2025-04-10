@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Identity - Web3 Identity Solution</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-id-card"></i>
+                <h1>Civic Identity</h1>
+            </div>
+            <div class="wallet-status">
+                <div id="wallet-indicator" class="disconnected">
+                    <i class="fas fa-wallet"></i>
+                    <span id="wallet-status-text">Wallet Disconnected</span>
+                </div>
+                <button id="connect-wallet" class="btn-primary">Connect Wallet</button>
+            </div>
+        </header>
+        
+        <main>
+            <section id="welcome-section" class="card">
+                <h2>Welcome to Civic Identity</h2>
+                <p>Create your blockchain identity with a soulbound NFT and join the decentralized identity ecosystem.</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-fingerprint"></i>
+                        <h3>Decentralized Identity</h3>
+                        <p>Own your digital identity with full control.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <h3>Soulbound NFT</h3>
+                        <p>Non-transferable token tied to your wallet.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-gas-pump"></i>
+                        <h3>Gas Bank</h3>
+                        <p>No ETH? No problem. We'll cover your first transaction.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="identity-section" class="card hidden">
+                <div id="loading-spinner" class="spinner hidden">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                </div>
+                
+                <div id="no-identity-view">
+                    <h2>Create Your Civic Identity</h2>
+                    <p>Mint your soulbound NFT to establish your decentralized identity.</p>
+                    <div class="action-container">
+                        <button id="create-identity" class="btn-primary">Create Identity</button>
+                    </div>
+                </div>
+                
+                <div id="has-identity-view" class="hidden">
+                    <h2>Your Civic Identity</h2>
+                    <div class="identity-card">
+                        <div class="identity-image">
+                            <img id="nft-image" src="placeholder-nft.png" alt="Your Identity NFT">
+                        </div>
+                        <div class="identity-details">
+                            <div class="info-row">
+                                <span class="label">DID:</span>
+                                <span id="did-value" class="value">-</span>
+                                <button id="copy-did" class="btn-icon"><i class="fas fa-copy"></i></button>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Wallet:</span>
+                                <span id="wallet-address" class="value">-</span>
+                                <button id="copy-address" class="btn-icon"><i class="fas fa-copy"></i></button>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Token ID:</span>
+                                <span id="token-id" class="value">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">Created:</span>
+                                <span id="creation-date" class="value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-container">
+                        <button id="view-on-explorer" class="btn-secondary">View on Explorer</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div id="network-status">
+                <span id="network-name">Not Connected</span>
+                <span id="network-indicator" class="disconnected-dot"></span>
+            </div>
+            <p>&copy; 2025 Civic Identity. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">
+        <div id="toast-icon"><i class="fas fa-info-circle"></i></div>
+        <div id="toast-message">Notification message</div>
+        <button id="toast-close"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <!-- Modal for transaction confirmation -->
+    <div id="tx-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Transaction Pending</h3>
+                <button id="modal-close" class="btn-icon"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-spinner" class="spinner">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                </div>
+                <p id="modal-message">Please confirm the transaction in your wallet...</p>
+                <div id="modal-details" class="hidden">
+                    <div class="info-row">
+                        <span class="label">Transaction Hash:</span>
+                        <span id="tx-hash" class="value">-</span>
+                        <button id="copy-tx" class="btn-icon"><i class="fas fa-copy"></i></button>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Status:</span>
+                        <span id="tx-status" class="value">Pending</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="view-tx" class="btn-secondary hidden">View on Explorer</button>
+                <button id="modal-action" class="btn-primary">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // Add error handling for script loading
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
+            return false;
+        };
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
