@@ -1,4 +1,4 @@
-# Civic Identity App - Implementation Guide
+# Civic Identity App - Soul Bound NFT Implementation to Verified Users
 
 This guide will walk you through setting up, deploying, and testing the Civic Identity app. This decentralized application (dApp) allows users to create a self-sovereign identity using a soulbound NFT and provides a gas bank for new users.
 
